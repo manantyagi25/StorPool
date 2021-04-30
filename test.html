@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<script src="Chart.js"></script>
+	<script src="jQuery.js"></script>
+</head>
+<body>
+	<canvas id="test" width="150" height="150"></canvas>
+	<script>
+		var ctx = document.getElementById("test");
+		var myChart = new Chart(ctx, {
+	  	type: 'pie',
+	  	data: {
+		    // labels: ['Used', 'Remaining'],
+		    datasets: [{
+		      label: 'Storage Space',
+		      data: [6, 4],
+		      backgroundColor: [
+		        '#00ffff',
+		        '#1f1f7a',
+		      ],
+		      borderWidth: 1
+		    }]
+		  },
+		  options: {
+		   	cutoutPercentage: 40,
+		    responsive: false,
+		    title: {
+	            display: true,
+	            text: 'Memory Usage',
+	            position: 'bottom'
+        	}
+	  }
+	});
+	</script>
+</body>
+</html>

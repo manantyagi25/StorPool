@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New UI Test</title>
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="Chart.js"></script>
+    <script src="jQuery.js"></script>
+</head>
+<body>
+	<div style="width: 100%;height: 100px;">
+		<div style="width: 100%;height: 100px;text-align: center;float: left;">
+			<div style="width:6%;height: 100px;float: left;">
+				<img src="Random.png" width="100px">
+			</div>
+			<h1>Control Panel</h1>
+		</div>
+	</div>
+	
+	<div style="width: 100%;height: 500px;background-color: #9f9f9f;">
+		
+		<div style="background-color: white; width: 45%;height: 120px;text-align: center;">
+			<div style="background-color: red; width:10%;height: 100px;float: left;">
+				<h1>Hi</h1>
+			</div>
+			
+			<div style="background-color: green;width:50%;height: 100px;float: left;">
+				<h1>Control Panel</h1>
+			</div>
+
+			<div style="background-color: blue;width:30%;height: 100px;float: left;">
+				<canvas id="<?php echo $rs2['ServerNo'] ?>" style="margin-top: 10%;width:90%;height:90%">
+                            <script>
+                                var ctx = document.getElementById("<?php echo $rs2['ServerNo'] ?>");
+                                var myChart = new Chart(ctx, {
+                                type: 'pie',
+                                data: {
+                                    labels: ['Used', 'Remaining'],
+                                    datasets: [{
+                                      label: 'Storage Space',
+                                      data: [<?php echo $rs2['Capacity'] ?>, <?php echo (((int)$rs2['Max'])-((int)$rs2['Capacity'])) ?>],
+                                      backgroundColor: [
+                                        // '#00ffff',
+                                        // '#1f1f7a',
+                                        '#FBBC05',
+                                        '#34B7F1'
+                                      ],
+                                      borderWidth: 1
+                                    }]
+                                  },
+                                  options: {
+                                    cutoutPercentage: 80,
+                                    responsive: false,
+                                    circumference: Math.PI,
+                                    rotation:Math.PI,
+                                    title: {
+                                        display: true,
+                                        text: 'Memory Usage',
+                                        fontColor: 'black',
+                                        position: 'bottom'
+                                    },
+
+                                    legend:{
+                                        display: false
+                                    }
+                                    }
+                                });
+                            </script>
+                        </canvas>
+			</div>
+
+			<div style="background-color: yellow;width:10%;height: 100px;float: left;">
+				<a href="xDel.php?DeleteS=<?php echo $rs2['ServerNo'] ?>">
+                    <img src="DeleteT.png" style="float:right;width:40%;margin-left: 2%;">
+                </a>
+			</div>
+		</div>
+
+		
+
+	</div>
+</body>
+</html>
